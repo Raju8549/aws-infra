@@ -96,6 +96,17 @@ resource "aws_instance" "Sonar-Qube_nexus-server" {
   }
 }
 
+resource "aws_instance" "Jenkins-server" {
+  ami           = "ami-04b70fa74e45c3917"
+  instance_type = "t2.xlarge"
+  key_name = "project"
+  subnet_id = aws_subnet.aws-subnet.id
+  vpc_security_group_ids = [aws_security_group.aws-sg.id]
+
+  tags = {
+    Name = "Jenkins-server" 
+  }
+}
 
 
 
